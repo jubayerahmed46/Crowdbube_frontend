@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function Login() {
+export default function Login() {
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -49,7 +50,9 @@ function Login() {
               />
             </div>
             <div>
-              <p>forget password</p>
+              <p className="text-sm text-mySecondery font-semibold text-right mt-2 hover:underline cursor-pointer">
+                forget password
+              </p>
             </div>
           </div>
 
@@ -75,5 +78,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;

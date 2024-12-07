@@ -21,7 +21,7 @@ function SignUp() {
                 id="fullName"
                 name="fullName"
                 type="fullName"
-                placeholder="fullName"
+                placeholder="John Doe"
                 required
                 autoComplete="fullName"
                 className="block w-full h-12 rounded-md dark:bg-black/35 dark:text-dark bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-mySecondery sm:text-sm/6"
@@ -38,9 +38,26 @@ function SignUp() {
                 id="email"
                 name="email"
                 type="email"
-                placeholder="email"
+                placeholder="john@gmail.com"
                 required
                 autoComplete="email"
+                className="block w-full h-12 rounded-md dark:bg-black/35 dark:text-dark bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-mySecondery sm:text-sm/6"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="photoUrl" className="block text-sm/6 font-medium ">
+              photoURL
+            </label>
+            <div className="mt-2">
+              <input
+                id="photoUrl"
+                name="photoUrl"
+                type="photoUrl"
+                placeholder="http://example.png"
+                required
+                autoComplete="photoUrl"
                 className="block w-full h-12 rounded-md dark:bg-black/35 dark:text-dark bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-mySecondery sm:text-sm/6"
               />
             </div>
