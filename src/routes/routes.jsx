@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Home, MainLayout } from ".";
+import { Home, MainLayout, AuthLayout, Login, SignUp } from ".";
 import ErrPage from "../err/ErrPage";
 
 export const routes = createBrowserRouter([
@@ -11,6 +11,20 @@ export const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "auth",
+        element: <AuthLayout />,
+        children: [
+          {
+            path: "/auth/login",
+            element: <Login />,
+          },
+          {
+            path: "/auth/signup",
+            element: <SignUp />,
+          },
+        ],
       },
     ],
   },

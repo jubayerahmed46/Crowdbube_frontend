@@ -15,7 +15,7 @@ export default {
         myPrimary: "#FF5103",
         mySecondery: "#5CB85C",
         myPurtiul: "#F0AD4E",
-        sunset: "#121C22",
+        sunset: "#0A1013",
         winter: "#FFFFFF",
         dark: "#9CB6CD",
         light: "#454a4d",

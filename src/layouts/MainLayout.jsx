@@ -6,8 +6,10 @@ function MainLayout() {
   return (
     <>
       <Nav />
-      <div className="container mx-auto px-3 mt-5 bg-red-200 min-h-80">
-        <Outlet />
+      <div className=" dark:bg-sunset bg-winter dark:*:text-dark text-light">
+        <div className="container mx-auto p-3   min-h-80">
+          <Outlet />
+        </div>
       </div>
       <Footer />
     </>

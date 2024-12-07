@@ -3,12 +3,13 @@ import { useState } from "react";
 import { Button, Dialog, DialogPanel, PopoverGroup } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import useTheme from "../hooks/useTheme";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { setTheme, theme } = useTheme();
   const themeRef = useRef();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTheme(themeRef.current.checked);
@@ -28,12 +29,15 @@ function Nav() {
     <header className={"dark:bg-sunset bg-winter dark:text-dark text-light"}>
       <nav
         aria-label="Global"
-        className="mx-auto flex container  items-center justify-between md:px-3 py-4"
+        className="mx-auto flex container  items-center justify-between px-4 py-4"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <button
+            onClick={() => navigate("/")}
+            className="hover:bg-gray-500/5 rounded-md -m-1.5 p-1.5"
+          >
             <img alt="" src="/assets/logo.png" className="h-12 w-auto" />
-          </a>
+          </button>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -90,17 +94,17 @@ function Nav() {
               <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
             </svg>
           </label>
-          <Link>
+          <Link to={"/auth/login"}>
             <button
-              type="primary"
               className={
                 " bg-myPrimary hover:bg-[#ff5708ce] text-white font-bold rounded-tl-md rounded-bl-md md:px-4 px-2 md:py-2 py-1 text-lg "
               }
             >
               Log in
             </button>
+          </Link>
+          <Link to={"/auth/signup"}>
             <button
-              type="primary"
               className={
                 " bg-[#ff5708ce] hover:bg-myPrimary text-white rounded-tr-md rounded-br-md font-bold md:px-4 px-2 md:py-2 py-1 text-lg "
               }
@@ -113,14 +117,13 @@ function Nav() {
       <Dialog
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
-        className="lg:hidden"
+        className="lg:hidden overflow-y-scroll"
       >
-        <div className="fixed inset-0 z-10" />
+        <div className="fixed inset-0 z-10 " />
         <DialogPanel className="fixed dark:bg-sunset bg-winter inset-y-0 right-0 z-10 w-full overflow-y-auto  px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <img alt="" src="/assets/logo.png" className="h-10 w-auto" />
+              <img alt="" src="/assets/logo.png" className="h-12 w-auto" />
             </a>
             <button
               type="button"
