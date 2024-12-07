@@ -1,16 +1,15 @@
 import { Outlet } from "react-router-dom";
 import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 
 function MainLayout() {
   return (
     <>
       <Nav />
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas, illum
-      eveniet vero aspernatur alias et libero, ex nemo, veritatis laudantium
-      quas dignissimos. Id minus tempore unde dolorem numquam ad quaerat
-      suscipit, eaque atque illum modi rerum dolores, dicta facere consequatur.
-      <Outlet />
-      <div>Footer</div>
+      <div className="container mx-auto px-3 mt-5 bg-red-200 min-h-80">
+        <Outlet />
+      </div>
+      <Footer />
     </>
   );
 }

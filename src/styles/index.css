@@ -8,3 +8,7 @@ body {
   font-family: "Quicksand", sans-serif;
   font-size: 30px;
 }
+
+* {
+  transition: all 0.1s linear;
+}
