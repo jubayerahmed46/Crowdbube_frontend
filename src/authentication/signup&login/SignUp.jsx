@@ -1,17 +1,40 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { updateProfile } from "firebase/auth";
+import GoogleSignIn from "./GoogleSignIn";
+import toast from "react-hot-toast";
 
 function SignUp() {
+  const { createNewAccount } = useAuth();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+
+    const displayName = form.fullName.value;
+    const email = form.email.value;
+    const photoURL = form.photoUrl.value;
+    const password = form.password.value;
+
+    createNewAccount(email, password).then(({ user }) => {
+      updateProfile(user, { displayName, photoURL }).then(() => {
+        toast.success(<h2 className="text-sm">SignUp Successfull</h2>);
+      });
+    });
+  };
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 className="mt-10 text-center text-3xl font-bold tracking-tight ">
           Create New Account
         </h2>
+        <GoogleSignIn />
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-md ">
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="fullName" className="block text-sm/6 font-medium ">
               FullName
@@ -20,7 +43,7 @@ function SignUp() {
               <input
                 id="fullName"
                 name="fullName"
-                type="fullName"
+                type="text"
                 placeholder="John Doe"
                 required
                 autoComplete="fullName"
@@ -54,7 +77,7 @@ function SignUp() {
               <input
                 id="photoUrl"
                 name="photoUrl"
-                type="photoUrl"
+                type="text"
                 placeholder="http://example.png"
                 required
                 autoComplete="photoUrl"

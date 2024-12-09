@@ -1,17 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import GoogleSignIn from "./GoogleSignIn";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 export default function Login() {
+  const { emailPasswordLogin } = useAuth();
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    emailPasswordLogin(email, password)
+      .then(() => {
+        toast.success(<h2 className="text-sm">Login Successfull</h2>);
+      })
+      .catch(() => {
+        console.log("login failed");
+      });
+  };
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 className="mt-10 text-center text-3xl font-bold tracking-tight ">
           Login
         </h2>
+        <GoogleSignIn />
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-md ">
-        <form className="space-y-6">
+        <form onSubmit={handleLogin} className="space-y-6">
           <div>
             <label htmlFor="email" className="block text-sm/6 font-medium ">
               Email address
