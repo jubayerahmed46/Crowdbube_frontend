@@ -57,22 +57,22 @@ function Nav() {
           </button>
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-7 xl:gap-x-12  ">
-          <a href="#" className="text-sm/6 font-semibold ">
+          <Link to={"/"} className="text-sm/6 font-semibold ">
             Home
-          </a>
+          </Link>
 
-          <a href="#" className="text-sm/6 font-semibold ">
+          <Link to={"allcampaign"} className="text-sm/6 font-semibold ">
             All Campaign
-          </a>
-          <a href="#" className="text-sm/6 font-semibold ">
+          </Link>
+          <Link to={"addcampaign"} className="text-sm/6 font-semibold ">
             Add New Campaign
-          </a>
-          <a href="#" className="text-sm/6 font-semibold ">
+          </Link>
+          <Link to={"mycampaign"} className="text-sm/6 font-semibold ">
             My Campaign
-          </a>
-          <a href="#" className="text-sm/6 font-semibold ">
+          </Link>
+          <Link to={"mydonation"} className="text-sm/6 font-semibold ">
             My Donations
-          </a>
+          </Link>
         </PopoverGroup>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">

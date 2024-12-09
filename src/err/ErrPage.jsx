@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 
 export default function ErrPage() {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ export default function ErrPage() {
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 }
