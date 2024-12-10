@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 
 function CampaignCard({ campaign }) {
-  const { title, description, goal, raised, deadline, image } = campaign || {};
+  const { title, description, goal, raised, deadline, image, _id } =
+    campaign || {};
   const remainingDays = Math.ceil(
     (new Date(deadline) - new Date()) / (1000 * 60 * 60 * 24)
   );
@@ -33,9 +35,11 @@ function CampaignCard({ campaign }) {
             {remainingDays > 0 ? `${remainingDays} days left` : "Ends today"}
           </p>
         </div>
-        <button className=" bg-myPurtiul hover:bg-[#ff5708ce] text-white font-bold dark:bg-myPurtiul/65 dark:text-white/80 dark:hover:bg-myPurtiul/80 rounded-md md:px-3 px-2 md:py-1 py-1 text-sm ">
-          See More
-        </button>
+        <Link to={`campaign/${_id}`}>
+          <button className=" bg-myPurtiul hover:bg-[#ff5708ce] text-white font-bold dark:bg-myPurtiul/65 dark:text-white/80 dark:hover:bg-myPurtiul/80 rounded-md md:px-3 px-2 md:py-1 py-1 text-sm ">
+            See More
+          </button>
+        </Link>
       </div>
     </div>
   );

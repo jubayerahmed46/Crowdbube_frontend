@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Home, MainLayout, AuthLayout, Login, SignUp } from ".";
 import ErrPage from "../err/ErrPage";
+import Details from "../components/Details";
+import PrivetRoute from "../privetRoutes/PrivetRoute";
 
 export const routes = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ export const routes = createBrowserRouter([
             element: <SignUp />,
           },
         ],
+      },
+      {
+        path: "campaign/:id",
+        element: (
+          <PrivetRoute>
+            <Details />
+          </PrivetRoute>
+        ),
       },
     ],
   },

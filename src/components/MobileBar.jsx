@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import React from "react";
 import { FaCircleXmark } from "react-icons/fa6";
 import LogOut from "../authentication/signup&login/LogOut";
 import { Link } from "react-router-dom";
@@ -13,6 +13,7 @@ function MobileBar({
   user,
   isAlertOpen,
   alertRef,
+  setIsAlertOpen,
 }) {
   const closeMobileBar = () => {
     setMobileMenuOpen(false);
@@ -100,19 +101,19 @@ function MobileBar({
               </label>
               {user ? (
                 <details open={isAlertOpen} className="relative">
-                  <summary
-                    className="list-none  mt-5 p-3 rounded-lg border-2 border-mySecondery/15 flex flex-col justify-center items-center"
-                    onMouseOver={() => setIsAlertOpen(true)}
-                  >
-                    <h2 className="text-sm mb-2 font-semibold">Profile</h2>
+                  <summary className="list-none  mt-5 p-3 rounded-lg border-2 border-mySecondery/15 flex flex-col justify-center w-52 items-center">
+                    <h2 className="text-sm mb-2 font-semibold dark:text-dark">
+                      Profile
+                    </h2>
                     <img
                       src={user?.photoURL}
+                      onMouseOver={() => setIsAlertOpen(true)}
                       className="md:h-10 h-8 ring-2 ring-myPurtiul cursor-pointer aspect-square rounded-full"
                     />
                   </summary>
                   <div
                     ref={alertRef}
-                    className="absolute -top-14 border p-12 rounded-md dark:bg-sunset z-20 dark:text-gray-300 bg-white right-5 shadow-md "
+                    className="absolute -top-14  border p-6 text-center w-[300px] -left-12 py-10  rounded-md dark:bg-sunset z-20 dark:text-gray-300 bg-white right-5 shadow-md "
                   >
                     <button
                       onClick={() => setIsAlertOpen(false)}
@@ -120,7 +121,7 @@ function MobileBar({
                     >
                       <FaCircleXmark />
                     </button>
-                    <h2 className="md:text-xl text-lg w-full text-nowrap font-bold">
+                    <h2 className="md:text-xl text-lg w-full font-bold">
                       Name: {user?.displayName}
                     </h2>
                     <LogOut />

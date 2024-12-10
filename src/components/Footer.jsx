@@ -1,5 +1,4 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -11,7 +10,11 @@ const Footer = () => {
               <div className="w-full px-4 sm:w-2/3 lg:w-3/12">
                 <div className="mb-10 w-full">
                   <Link to={"/"} className=" inline-block">
-                    <img src="/assets/logo.png" alt="logo" className=" h-12 " />
+                    <img
+                      src="/assets/logo.png"
+                      alt="logo"
+                      className=" md:h-12 h-10"
+                    />
                   </Link>
                   <p className="mb-7 text-base  dark:text-dark">
                     A platform to fund dreams, ideas, and causes—connect,

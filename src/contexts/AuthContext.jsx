@@ -1,11 +1,9 @@
 import {
   createUserWithEmailAndPassword,
-  getRedirectResult,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
-  signInWithRedirect,
   signOut,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
@@ -17,11 +15,13 @@ const provider = new GoogleAuthProvider();
 
 function AuthProvder({ children }) {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const authObserver = onAuthStateChanged(auth, (userCredetial) => {
       if (userCredetial) {
         console.log(userCredetial);
         setUser(userCredetial);
+        setLoading(false);
       }
     });
 
@@ -31,15 +31,18 @@ function AuthProvder({ children }) {
   // google signin
 
   const signInWithGoogle = async () => {
+    setLoading(true);
     return await signInWithPopup(auth, provider);
   };
 
   // emailPassword login
   const emailPasswordLogin = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const createNewAccount = async (email, password) => {
+    setLoading(true);
     return await createUserWithEmailAndPassword(auth, email, password);
   };
 
@@ -56,6 +59,8 @@ function AuthProvder({ children }) {
         setUser,
         signOutUser,
         emailPasswordLogin,
+        loading,
+        setLoading,
       }}
     >
       {children}

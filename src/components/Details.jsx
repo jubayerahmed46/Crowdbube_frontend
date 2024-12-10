@@ -1,5 +1,8 @@
+import { Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
-import CampaignCard from "./CampaignCard";
+import { IoArrowBackOutline } from "react-icons/io5";
+import { useNavigate, useParams } from "react-router-dom";
+
 const campaignsData = [
   {
     title: "Urgent Medical Fund for Pediatric Heart Surgery",
@@ -90,65 +93,74 @@ const campaignsData = [
     _id: 8,
   },
 ];
-const RunningCanpaigns = () => {
-  const [campaigns, setCampaigns] = useState([]);
-  const [addTwo, setAddTwo] = useState(6);
+
+export function Details() {
+  const params = useParams();
+  const [data, setData] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
-    setCampaigns(campaignsData.slice(0, addTwo));
-  }, [addTwo]);
+    const d = campaignsData.find((camp) => {
+      return camp._id == params.id;
+    });
+    setData(d);
+  }, [params]);
 
-  const showMoreCampaignHandler = () => {
-    console.log(campaignsData.length);
-    if (campaignsData.length > 7) {
-      setAddTwo((prev) => prev + 3);
-    } else if (campaignsData.length === 7) {
-      setAddTwo((prev) => prev + 2);
-    } else if (campaignsData.length === addTwo) {
-      setAddTwo((prev) => prev + 1);
-    }
-  };
+  const { title, description, goal, raised, deadline, image } = data;
 
-  const showLessCampaignHandler = () => {
-    setAddTwo(6);
-  };
-
-  return (
-    <div className="mt-14 ">
-      <div className="flex flex-col items-center mb-7 ">
-        <h2 className="text-center md:text-3xl text-xl mb-2 font-semibold ">
-          Running <span>Campaigns</span>
-        </h2>
-        <span className=" h-1 md:w-44 w-32 bg-mySecondery rounded-sm"></span>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-        {campaigns.length > 0 ? (
-          campaigns.map((campaign, index) => (
-            <CampaignCard key={index} campaign={campaign} />
-          ))
-        ) : (
-          <p className="text-center text-gray-500 col-span-full">
-            No active campaigns at the moment. Check back later!
-          </p>
-        )}
-      </div>
-      {campaignsData.length + 1 === addTwo ? (
-        <button
-          onClick={showLessCampaignHandler}
-          className=" bg-myPrimary hover:bg-myPrimary/70 text-white font-bold dark:bg-myPurtiul/65 dark:text-white/80 dark:hover:bg-myPurtiul/80 rounded-md md:px-4 px-2 md:py-1 py-2 text-lg"
-        >
-          Show Less
-        </button>
-      ) : (
-        <button
-          onClick={showMoreCampaignHandler}
-          className=" bg-mySecondery hover:bg-[#246b2ece]  mr-2 text-white font-bold dark:bg-myPurtiul/65 dark:text-white/80 dark:hover:bg-myPurtiul/80 rounded-md md:px-4 text-sm px-2 md:py-1 py-2 md:text-lg"
-        >
-          Show More
-        </button>
-      )}
-    </div>
+  const remainingDays = Math.ceil(
+    (new Date(deadline) - new Date()) / (1000 * 60 * 60 * 24)
   );
-};
+  return (
+    <section className="py-6 px-8">
+      <button
+        onClick={() => navigate(-1)}
+        color="gray"
+        className="  font-bold  mb-6  rounded-md md:px-6 px-3  md:py-2 py-1 md:text-3xl text-2xl hover:-ml-1"
+      >
+        <IoArrowBackOutline />
+      </button>
+      <div className="mx-auto container flex place-items-center flex-col md:flex-row gap-8">
+        <img
+          src={image}
+          alt={title}
+          className="md:h-[30rem]  object-cover brightness-75 md:w-1/2"
+        />
+        <div>
+          <div className="mb-4 md:text-3xl text-xl font-bold">{title}</div>
+          <div>
+            <div className="flex sm:flex-row flex-col font-semibold sm:justify-between md:text-lg text-base ">
+              <h2 className="text-mySecondery  ">
+                {" "}
+                Raised: $ {raised?.toLocaleString()} (
+                {Math.floor((raised / goal) * 100)}%)
+              </h2>
+              <h2>Goal: $ {goal?.toLocaleString()}</h2>
+            </div>
+          </div>
+          <div className="!mt-4 md:text-base text-sm font-normal leading-[27px] !text-gray-500">
+            {description}
+          </div>
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <p className="text-sm text-green-600 font-semibold"></p>
+            </div>
+            <p className="text-sm text-gray-500 font-semibold">
+              {remainingDays > 0 ? `${remainingDays} days left` : "Ends today"}
+            </p>
+          </div>
+          <div className="mb-4 flex  items-center gap-3 md:w-1/2 md:justify-start w-full">
+            <button
+              color="gray"
+              className=" bg-mySecondery hover:bg-[#3c8f3c] text-white font-bold dark:bg-mySecondery dark:text-white/80 md:w-auto w-full dark:hover:bg-mySecondery/80 rounded-md md:px-10 px-5 md:py-2 py-1 text-lg"
+            >
+              Donate
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-export default RunningCanpaigns;
+export default Details;

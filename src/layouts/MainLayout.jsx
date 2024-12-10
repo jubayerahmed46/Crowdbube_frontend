@@ -5,7 +5,7 @@ import { Toaster } from "react-hot-toast";
 
 function MainLayout() {
   return (
-    <>
+    <div className="relative">
       <Nav />
       <div className=" dark:bg-sunset bg-winter dark:*:text-dark text-light">
         <div className="container mx-auto p-3   min-h-80">
@@ -14,7 +14,7 @@ function MainLayout() {
       </div>
       <Footer />
       <Toaster position="top-center" reverseOrder={false} />
-    </>
+    </div>
   );
 }
 

@@ -10,19 +10,20 @@ export default [
     files: ["**/*.{js,jsx}"],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.node, // If you also want Node.js globals
+        ...globals.es6,
+      },
       parserOptions: {
         ecmaVersion: "latest",
         ecmaFeatures: { jsx: true },
         sourceType: "module",
       },
     },
-    env: {
-      browser: true,
-      node: true,
-      es6: true,
+    settings: {
+      react: { version: "detect" },
     },
-    settings: { react: { version: "18.3" } },
     plugins: {
       react,
       "react-hooks": reactHooks,

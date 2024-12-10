@@ -1,14 +1,26 @@
-import React from "react";
 import { FaGoogle } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function GoogleSignIn() {
   const { signInWithGoogle } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const handleGoogleSignIn = () => {
-    signInWithGoogle().then(() => {
-      toast.success(<h2 className="text-sm">Login Successfull</h2>);
-    });
+    signInWithGoogle()
+      .then(() => {
+        if (location.state) {
+          navigate(location.state);
+        } else {
+          navigate("/");
+        }
+        toast.success(<h2 className="text-sm">Login Successfull</h2>);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
   return (
     <div className="flex justify-center">
