@@ -3,7 +3,7 @@ import { useState } from "react";
 import { PopoverGroup } from "@headlessui/react";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import useTheme from "../hooks/useTheme";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { FaCircleXmark } from "react-icons/fa6";
 import LogOut from "../authentication/signup&login/LogOut";
@@ -20,7 +20,7 @@ function Nav() {
 
   useEffect(() => {
     setTheme(themeRef.current.checked);
-  }, []);
+  }, [setTheme]);
 
   const handleThemeToggle = () => {
     const html = document.querySelector("html");
@@ -33,7 +33,9 @@ function Nav() {
   };
 
   return (
-    <header className={"dark:bg-sunset bg-winter dark:text-dark text-light"}>
+    <header
+      className={"dark:bg-sunset bg-winter dark:text-neutral-200 text-light"}
+    >
       <nav
         aria-label="Global"
         className="mx-auto flex container  items-center justify-between px-4 py-4"
@@ -61,22 +63,57 @@ function Nav() {
           </button>
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-7 xl:gap-x-12  ">
-          <Link to={"/"} className="text-sm/6 font-semibold ">
+          <NavLink
+            to={"/"}
+            className={({ isActive }) =>
+              `${
+                isActive ? "text-myPrimary font-semibold" : ""
+              } text-sm/6 font-semibold `
+            }
+          >
             Home
-          </Link>
+          </NavLink>
 
-          <Link to={"allcampaign"} className="text-sm/6 font-semibold ">
+          <NavLink
+            to={"allCampaign"}
+            className={({ isActive }) =>
+              `${
+                isActive ? "text-myPrimary font-semibold" : ""
+              } text-sm/6 font-semibold `
+            }
+          >
             All Campaign
-          </Link>
-          <Link to={"addcampaign"} className="text-sm/6 font-semibold ">
+          </NavLink>
+          <NavLink
+            to={"addCampaign"}
+            className={({ isActive }) =>
+              `${
+                isActive ? "text-myPrimary font-semibold" : ""
+              } text-sm/6 font-semibold `
+            }
+          >
             Add New Campaign
-          </Link>
-          <Link to={"mycampaign"} className="text-sm/6 font-semibold ">
+          </NavLink>
+          <NavLink
+            to={"myCampaign"}
+            className={({ isActive }) =>
+              `${
+                isActive ? "text-myPrimary font-semibold" : ""
+              } text-sm/6 font-semibold `
+            }
+          >
             My Campaign
-          </Link>
-          <Link to={"mydonation"} className="text-sm/6 font-semibold ">
+          </NavLink>
+          <NavLink
+            to={"myDonations"}
+            className={({ isActive }) =>
+              `${
+                isActive ? "text-myPrimary font-semibold" : ""
+              } text-sm/6 font-semibold `
+            }
+          >
             My Donations
-          </Link>
+          </NavLink>
         </PopoverGroup>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">

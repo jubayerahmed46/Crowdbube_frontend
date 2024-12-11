@@ -9,7 +9,7 @@ const campaignsData = [
     raised: 32000,
     deadline: "2024-12-25",
     image: "https://i.ibb.co.com/r0cXqJp/maxresdefault.jpg",
-    category: "Personal Needs",
+    category: "Personal issue",
     _id: 1,
   },
   {
@@ -42,7 +42,7 @@ const campaignsData = [
     raised: 39000,
     deadline: "2024-12-20",
     image: "https://i.ibb.co.com/cFzGQZK/flood-victims.jpg",
-    category: "Personal Needs",
+    category: "Personal issue",
     _id: 4,
   },
   {
@@ -75,7 +75,7 @@ const campaignsData = [
     raised: 12000,
     deadline: "2024-12-18",
     image: "https://i.ibb.co.com/bzv58nJ/pict-large.jpg",
-    category: "Personal Needs",
+    category: "Personal issue",
     _id: 7,
   },
   {

@@ -73,7 +73,7 @@ function SignUp() {
                 placeholder="John Doe"
                 required
                 autoComplete="fullName"
-                className="block w-full h-12 rounded-md dark:bg-black/35 dark:text-dark bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-mySecondery sm:text-sm/6"
+                className="block w-full h-12 rounded-md dark:bg-black/35 dark:text-neutral-200 bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-mySecondery sm:text-sm/6"
               />
             </div>
           </div>
@@ -90,7 +90,7 @@ function SignUp() {
                 placeholder="john@gmail.com"
                 required
                 autoComplete="email"
-                className="block w-full h-12 rounded-md dark:bg-black/35 dark:text-dark bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-mySecondery sm:text-sm/6"
+                className="block w-full h-12 rounded-md dark:bg-black/35 dark:text-neutral-200 bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-mySecondery sm:text-sm/6"
               />
             </div>
             <p className="text-sm text-error mt-1"> {emailErr && emailErr}</p>
@@ -108,7 +108,7 @@ function SignUp() {
                 placeholder="http://example.png"
                 required
                 autoComplete="photoUrl"
-                className="block w-full h-12 rounded-md dark:bg-black/35 dark:text-dark bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-mySecondery sm:text-sm/6"
+                className="block w-full h-12 rounded-md dark:bg-black/35 dark:text-neutral-200 bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-mySecondery sm:text-sm/6"
               />
             </div>
           </div>

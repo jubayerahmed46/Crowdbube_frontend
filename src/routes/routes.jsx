@@ -3,6 +3,10 @@ import { Home, MainLayout, AuthLayout, Login, SignUp } from ".";
 import ErrPage from "../err/ErrPage";
 import Details from "../components/Details";
 import PrivetRoute from "../privetRoutes/PrivetRoute";
+import AddCampaign from "../pages/AddCampaign/AddCampaign";
+import AllCampaign from "../pages/AllCampaign/AllCampaign";
+import MyCampaign from "../pages/myCampaign/MyCampaigns";
+import MyDonations from "../pages/myDonation/MyDonations";
 
 export const routes = createBrowserRouter([
   {
@@ -13,6 +17,26 @@ export const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "addCampaign",
+        element: (
+          <PrivetRoute>
+            <AddCampaign />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "allCampaign",
+        element: <AllCampaign />,
+      },
+      {
+        path: "myCampaign",
+        element: <MyCampaign />,
+      },
+      {
+        path: "myDonations",
+        element: <MyDonations />,
       },
       {
         path: "auth",

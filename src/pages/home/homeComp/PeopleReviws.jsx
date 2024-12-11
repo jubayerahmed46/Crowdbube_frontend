@@ -24,7 +24,7 @@ const reviews = [
 const ReviewCard = ({ name, feedback, rating }) => (
   <div className="bg-white dark:bg-gray-600/10 p-6 rounded-lg shadow-md">
     <h3 className="text-lg font-semibold mb-2">{name}</h3>
-    <p className="dark:text-dark text-base mb-4 ">{feedback}</p>
+    <p className="dark:text-neutral-200 text-base mb-4 ">{feedback}</p>
     <div className="flex items-center text-lg text-center">
       {Array(rating)
         .fill()

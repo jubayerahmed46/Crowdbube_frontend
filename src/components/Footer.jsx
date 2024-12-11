@@ -16,7 +16,7 @@ const Footer = () => {
                       className=" md:h-12 h-10"
                     />
                   </Link>
-                  <p className="mb-7 text-base  dark:text-dark">
+                  <p className="mb-7 text-base  dark:text-neutral-200">
                     A platform to fund dreams, ideas, and causes—connect,
                     contribute, and bring projects to life. From creative
                     ventures to personal needs.
@@ -57,32 +57,42 @@ const Footer = () => {
               </div>
 
               <LinkGroup header="Explore">
-                <p className="dark:text-dark hover:underline">
+                <p className="dark:text-neutral-200 hover:underline">
                   Browse Campaigns
                 </p>
-                <p className="dark:text-dark hover:underline">How It Works</p>
-                <p className="dark:text-dark hover:underline">
+                <p className="dark:text-neutral-200 hover:underline">
+                  How It Works
+                </p>
+                <p className="dark:text-neutral-200 hover:underline">
                   Success Stories
                 </p>
-                <p className="dark:text-dark hover:underline">
+                <p className="dark:text-neutral-200 hover:underline">
                   Start a Campaign
                 </p>
               </LinkGroup>
               <LinkGroup header="About">
-                <p className="dark:text-dark hover:underline">About Us</p>
-                <p className="dark:text-dark hover:underline">
+                <p className="dark:text-neutral-200 hover:underline">
+                  About Us
+                </p>
+                <p className="dark:text-neutral-200 hover:underline">
                   Contact Support
                 </p>
-                <p className="dark:text-dark hover:underline">Our Mission</p>
-                <p className="dark:text-dark hover:underline">Privacy Policy</p>
+                <p className="dark:text-neutral-200 hover:underline">
+                  Our Mission
+                </p>
+                <p className="dark:text-neutral-200 hover:underline">
+                  Privacy Policy
+                </p>
               </LinkGroup>
               <LinkGroup header="Resources">
-                <p className="dark:text-dark hover:underline">FAQs</p>
-                <p className="dark:text-dark hover:underline">Blog</p>
-                <p className="dark:text-dark hover:underline">
+                <p className="dark:text-neutral-200 hover:underline">FAQs</p>
+                <p className="dark:text-neutral-200 hover:underline">Blog</p>
+                <p className="dark:text-neutral-200 hover:underline">
                   Terms & Conditions
                 </p>
-                <p className="dark:text-dark hover:underline">Get Help</p>
+                <p className="dark:text-neutral-200 hover:underline">
+                  Get Help
+                </p>
               </LinkGroup>
 
               <div className="w-full px-4 sm:w-1/2 lg:w-3/12">
@@ -123,8 +133,8 @@ const Footer = () => {
                       </svg>
                     </a>
                   </div>
-                  <p className="text-base dark:text-dark">
-                    &copy; 2025 TailGrids
+                  <p className="text-base dark:text-neutral-200">
+                    &copy; 2025 CrowdCube
                   </p>
                 </div>
               </div>

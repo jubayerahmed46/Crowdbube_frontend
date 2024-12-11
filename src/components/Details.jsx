@@ -2,6 +2,7 @@ import { Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { useNavigate, useParams } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const campaignsData = [
   {
@@ -92,12 +93,35 @@ const campaignsData = [
     category: "Creative Ideas",
     _id: 8,
   },
+  {
+    title: "Hello world",
+    description: "I'm poor, help me please",
+    image: "https://outu.be/Q9YaaP9hNfw?si=BB2uuflfOodNqg3f",
+    goal: 50000,
+    category: "personal issue",
+    deadline: "2024-12-27T14:31:17.000Z",
+    fullname: "Sahar Ali",
+    email: "john@doe.com",
+    _id: 3874,
+  },
+  {
+    title: "Hello world",
+    description: "I'm poor, help me please",
+    image: "https://outu.be/Q9YaaP9hNfw?si=BB2uuflfOodNqg3f",
+    goal: 50000,
+    category: "personal issue",
+    deadline: "2024-12-27T14:31:17.000Z",
+    fullname: "Sahar Ali",
+    email: "john@doe.com",
+    _id: 38374,
+  },
 ];
 
 export function Details() {
   const params = useParams();
   const [data, setData] = useState({});
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   useEffect(() => {
     const d = campaignsData.find((camp) => {
@@ -106,7 +130,17 @@ export function Details() {
     setData(d);
   }, [params]);
 
-  const { title, description, goal, raised, deadline, image } = data;
+  const handlerDonation = (donatedCampaign) => {
+    const donationDetails = {
+      username: user?.displayName,
+      email: user?.email,
+      donatedCampaign,
+    };
+
+    console.log(donationDetails);
+  };
+
+  const { title, description, goal, raised, deadline, image } = data || {};
 
   const remainingDays = Math.ceil(
     (new Date(deadline) - new Date()) / (1000 * 60 * 60 * 24)
@@ -151,6 +185,7 @@ export function Details() {
           </div>
           <div className="mb-4 flex  items-center gap-3 md:w-1/2 md:justify-start w-full">
             <button
+              onClick={() => handlerDonation(data)}
               color="gray"
               className=" bg-mySecondery hover:bg-[#3c8f3c] text-white font-bold dark:bg-mySecondery dark:text-white/80 md:w-auto w-full dark:hover:bg-mySecondery/80 rounded-md md:px-10 px-5 md:py-2 py-1 text-lg"
             >

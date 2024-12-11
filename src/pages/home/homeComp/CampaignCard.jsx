@@ -21,7 +21,7 @@ function CampaignCard({ campaign }) {
             {title.split(" ")[0] + " " + title.split(" ")[1]}...
           </Link>
         </h3>
-        <p className="text-gray-700 dark:text-dark/80 text-base mb-4">
+        <p className="text-gray-700 dark:text-neutral-200/80 text-base mb-4">
           {description.slice(0, 70)}...
         </p>
         <div className="flex items-center justify-between mb-4">

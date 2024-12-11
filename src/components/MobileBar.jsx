@@ -33,7 +33,7 @@ function MobileBar({
           <button
             type="button"
             onClick={closeMobileBar}
-            className="-m-2.5 rounded-md p-2.5 dark:text-dark"
+            className="-m-2.5 rounded-md p-2.5 dark:text-neutral-200"
           >
             <XMarkIcon aria-hidden="true" className="size-6" />
           </button>
@@ -43,38 +43,38 @@ function MobileBar({
             <div className="space-y-2 py-6">
               <a
                 href="#"
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-dark text-light  hover:bg-gray-50"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-neutral-200 text-light  hover:bg-gray-50"
               >
                 Home
               </a>
               <a
                 href="#"
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-dark text-light  hover:bg-gray-50"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-neutral-200 text-light  hover:bg-gray-50"
               >
                 All Campaign
               </a>
               <a
                 href="#"
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-dark text-light  hover:bg-gray-50"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-neutral-200 text-light  hover:bg-gray-50"
               >
                 Add New Campaign
               </a>
               <a
                 href="#"
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-dark text-light  hover:bg-gray-50"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-neutral-200 text-light  hover:bg-gray-50"
               >
                 My Campaign
               </a>
               <a
                 href="#"
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-dark text-light  hover:bg-gray-50"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-neutral-200 text-light  hover:bg-gray-50"
               >
                 My Donations
               </a>
             </div>
 
             <div className=" flex flex-col items-center">
-              <label className="swap swap-rotate my-4 text-left dark:text-dark shadow-md rounded-full p-2">
+              <label className="swap swap-rotate my-4 text-left dark:text-neutral-200 shadow-md rounded-full p-2">
                 <input
                   type="checkbox"
                   onChange={handleThemeToggle}
@@ -102,7 +102,7 @@ function MobileBar({
               {user ? (
                 <details open={isAlertOpen} className="relative">
                   <summary className="list-none  mt-5 p-3 rounded-lg border-2 border-mySecondery/15 flex flex-col justify-center w-52 items-center">
-                    <h2 className="text-sm mb-2 font-semibold dark:text-dark">
+                    <h2 className="text-sm mb-2 font-semibold dark:text-neutral-200">
                       Profile
                     </h2>
                     <img
