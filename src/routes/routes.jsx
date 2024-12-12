@@ -1,12 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Home, MainLayout, AuthLayout, Login, SignUp } from ".";
-import ErrPage from "../err/ErrPage";
-import Details from "../components/Details";
-import PrivetRoute from "../privetRoutes/PrivetRoute";
-import AddCampaign from "../pages/AddCampaign/AddCampaign";
-import AllCampaign from "../pages/AllCampaign/AllCampaign";
-import MyCampaign from "../pages/myCampaign/MyCampaigns";
-import MyDonations from "../pages/myDonation/MyDonations";
+import {
+  Home,
+  MainLayout,
+  AuthLayout,
+  Login,
+  SignUp,
+  ErrPage,
+  Details,
+  PrivetRoute,
+  AddCampaign,
+  AllCampaign,
+  MyCampaign,
+  MyDonations,
+} from ".";
 
 export const routes = createBrowserRouter([
   {
@@ -17,6 +23,7 @@ export const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => fetch("http://localhost:4601/allCampaign?noQuery=true"),
       },
       {
         path: "addCampaign",
@@ -28,11 +35,20 @@ export const routes = createBrowserRouter([
       },
       {
         path: "allCampaign",
-        element: <AllCampaign />,
+        element: (
+          <PrivetRoute>
+            <AllCampaign />
+          </PrivetRoute>
+        ),
+        loader: () => fetch("http://localhost:4601/allCampaign"),
       },
       {
         path: "myCampaign",
-        element: <MyCampaign />,
+        element: (
+          <PrivetRoute>
+            <MyCampaign />
+          </PrivetRoute>
+        ),
       },
       {
         path: "myDonations",
@@ -59,6 +75,8 @@ export const routes = createBrowserRouter([
             <Details />
           </PrivetRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:4601/allCampaign/${params.id}`),
       },
     ],
   },

@@ -1,5 +1,3 @@
-import React from "react";
-
 function HowCanFund() {
   return (
     <div className="flex flex-col md:flex-row gap-10 items-center md:items-center mt-14  bg-gray-600/5 rounded-md px-4 py-14">

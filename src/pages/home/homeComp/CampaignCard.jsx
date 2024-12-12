@@ -2,8 +2,7 @@
 import { Link } from "react-router-dom";
 
 function CampaignCard({ campaign }) {
-  const { title, description, goal, raised, deadline, image, _id } =
-    campaign || {};
+  const { title, description, amount, deadline, url, _id } = campaign || {};
   const remainingDays = Math.ceil(
     (new Date(deadline) - new Date()) / (1000 * 60 * 60 * 24)
   );
@@ -12,7 +11,7 @@ function CampaignCard({ campaign }) {
     <div className="max-w-sm rounded overflow-hidden border dark:border-gray-800 p-3">
       <img
         className="w-full h-48 object-cover rounded-md"
-        src={image}
+        src={url}
         alt={title}
       />
       <div className="px-6 py-4">
@@ -26,9 +25,8 @@ function CampaignCard({ campaign }) {
         </p>
         <div className="flex items-center justify-between mb-4">
           <div>
-            <p className="text-sm text-green-600 font-semibold">
-              Raised: ${raised?.toLocaleString()} (
-              {Math.floor((raised / goal) * 100)}%)
+            <p className="text-base text-green-600 font-semibold">
+              Amount: ${amount?.toLocaleString()}
             </p>
           </div>
           <p className="text-sm text-gray-500 font-semibold">

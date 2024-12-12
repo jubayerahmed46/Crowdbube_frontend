@@ -16,13 +16,13 @@ const provider = new GoogleAuthProvider();
 
 function AuthProvder({ children }) {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const authObserver = onAuthStateChanged(auth, (userCredetial) => {
+      setLoading(false);
       if (userCredetial) {
         console.log(userCredetial);
         setUser(userCredetial);
-        setLoading(false);
       }
     });
 

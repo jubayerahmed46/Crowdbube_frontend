@@ -1,32 +1,48 @@
 import { Card, Typography } from "@material-tailwind/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";
+import "react-datepicker/dist/react-datepicker.css";
+import UpdateCampaign from "./UpdateCampaign";
+import Swal from "sweetalert2";
 
 const MyCampaign = () => {
-  // Sample campaign data; replace with real data fetched from an API.
-  const [campaigns, setCampaigns] = useState([
-    {
-      _id: 1,
-      title: "Help for Education",
-      category: "Education",
-      goal: 10000,
-      deadline: "2024-12-31",
-    },
-    {
-      _id: 2,
-      title: "Support Small Business",
-      category: "Business",
-      goal: 20000,
-      deadline: "2024-11-30",
-    },
-  ]);
+  const { user } = useAuth();
+  const [campaigns, setCampaigns] = useState([]);
+  const [updateCampaign, setUpdateCampaign] = useState({});
+  const [loadPage, setLoadPage] = useState(true);
 
-  const handleUpdate = (id) => {
-    console.log("Update campaign with ID:", id);
+  useEffect(() => {
+    setLoadPage(false);
+    fetch(`http://localhost:4601/myCampaigns/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCampaigns(data);
+      });
+  }, [user, loadPage]);
+
+  const handleUpdate = (campaign) => {
+    document.getElementById("my_modal_4").showModal();
+    setUpdateCampaign(campaign);
   };
 
   const handleDelete = (id) => {
-    console.log("Delete campaign with ID:", id);
-    setCampaigns(campaigns.filter((campaign) => campaign._id !== id));
+    Swal.fire({
+      title: "Do you want to delete the Campaign",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Delete",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:4601/myCampaign/delete/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Contend-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then(() => Swal.fire("Campaign Deleted", "", "success"));
+        setCampaigns(campaigns.filter((campaign) => campaign._id !== id));
+      }
+    });
   };
 
   return (
@@ -37,12 +53,12 @@ const MyCampaign = () => {
           View and manage your added campaigns.
         </p>
       </div>
-      <Card className="overflow-x-auto shadow-sm rounded-md">
-        <table className="w-full min-w-[640px] table-auto">
-          <thead className="bg-gray-200">
+      <Card className="overflow-x-auto shadow-sm rounded-md border border-gray-300 dark:border-gray-800">
+        <table className="w-full min-w-[640px] table-auto ">
+          <thead className="bg-gray-200 dark:bg-myPurtiul/60 pt-5">
             <tr>
               <th className="p-4 text-left">
-                <Typography className="font-bold text-gray-700">
+                <Typography className="font-bold text-gray-700 ">
                   Title
                 </Typography>
               </th>
@@ -68,44 +84,68 @@ const MyCampaign = () => {
               </th>
             </tr>
           </thead>
-          <tbody>
-            {campaigns.map(({ _id, title, category, goal, deadline }) => (
-              <tr key={_id} className="border-b last:border-b-0">
-                <td className="p-4">
-                  <Typography className="text-gray-800">{title}</Typography>
-                </td>
-                <td className="p-4">
-                  <Typography className="text-gray-600">{category}</Typography>
-                </td>
-                <td className="p-4">
-                  <Typography className="text-gray-600">${goal}</Typography>
-                </td>
-                <td className="p-4">
-                  <Typography className="text-gray-600">
-                    {new Date(deadline).toLocaleDateString()}
-                  </Typography>
-                </td>
-                <td className="p-4 text-center">
-                  <div className="flex gap-2 justify-center">
-                    <button
-                      onClick={() => handleUpdate(_id)}
-                      className=" bg-mySecondery hover:bg-[#3b823b] text-white font-bold rounded-md md:px-4 px-2 py-1 text-sm"
-                    >
-                      Update
-                    </button>
-                    <button
-                      onClick={() => handleDelete(_id)}
-                      className=" bg-myPrimary hover:bg-[#ff5708ce] text-white font-bold rounded-md md:px-4 px-2 py-1 text-sm"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
+          <tbody className="dark:bg-sunset">
+            {campaigns?.map((campaign) => {
+              let { _id, title, category, amount, deadline } = campaign;
+              return (
+                <tr key={_id} className="border-b last:border-b-0">
+                  <td className="p-4">
+                    <Typography className=" text-gray-800 dark:text-dark">
+                      {title.split(" ")[0] +
+                        " " +
+                        title.split(" ")[1] +
+                        " " +
+                        title.split(" ")[2]}
+                    </Typography>
+                  </td>
+                  <td className="p-4">
+                    <Typography className="text-gray-600 dark:text-dark text-sm">
+                      {category}
+                    </Typography>
+                  </td>
+                  <td className="p-4">
+                    <Typography className="text-gray-600 dark:text-dark text-sm">
+                      ${amount}
+                    </Typography>
+                  </td>
+                  <td className="p-4">
+                    <Typography className="text-gray-600 dark:text-dark text-sm">
+                      {new Date(deadline).toLocaleDateString()}
+                    </Typography>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex gap-2 justify-center">
+                      <button
+                        onClick={() => handleUpdate(campaign)}
+                        className=" bg-mySecondery hover:bg-[#3b823b] text-white font-bold rounded-md md:px-4 px-2 py-1 text-sm"
+                      >
+                        Update
+                      </button>
+
+                      <button
+                        onClick={() => handleDelete(_id)}
+                        className=" bg-myPrimary hover:bg-[#ff5708ce] text-white font-bold rounded-md md:px-4 px-2 py-1 text-sm"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </Card>
+      <dialog id="my_modal_4" className="modal">
+        <div className="modal-box w-11/12 max-w-5xl">
+          <div className="modal-action flex-col">
+            <UpdateCampaign
+              setLoadPage={setLoadPage}
+              updateCampaign={updateCampaign}
+            />
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 };

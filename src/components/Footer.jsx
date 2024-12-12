@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
-      <footer className="relative z-10 bg-winter dark:bg-sunset  pb-10 pt-20  lg:pb-20 lg:pt-[120px]  mx-auto px-3">
-        <div className="container mx-auto border-t pt-4 ">
+      <footer className="relative z-10 bg-winter dark:bg-sunset  pb-10 pt-20  lg:pb-20 lg:pt-[120px]">
+        <div className="container mx-auto border-t border-l-black pt-4 ">
           <div className="container">
             <div className=" flex  flex-wrap">
               <div className="w-full px-4 sm:w-2/3 lg:w-3/12">

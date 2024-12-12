@@ -1,5 +1,5 @@
 import { Card, Typography } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const TABLE_HEAD = [
   "Campaign Title",
@@ -10,37 +10,13 @@ const TABLE_HEAD = [
   "Actions",
 ];
 
-const TABLE_ROWS = [
-  {
-    title: "Hello world",
-    description: "I'm poor, help me please",
-    image: "https://outu.be/Q9YaaP9hNfw?si=BB2uuflfOodNqg3f",
-    goal: 50000,
-    category: "personal issue",
-    deadline: "2024-12-27T14:31:17.000Z",
-    fullname: "Sahar Ali",
-    email: "john@doe.com",
-    _id: 3874,
-  },
-  {
-    title: "Hello world",
-    description: "I'm poor, help me please",
-    image: "https://outu.be/Q9YaaP9hNfw?si=BB2uuflfOodNqg3f",
-    goal: 50000,
-    category: "personal issue",
-    deadline: "2024-12-27T14:31:17.000Z",
-    fullname: "Sahar Ali",
-    email: "john@doe.com",
-    _id: 38374,
-  },
-];
-
 export default function AllCampaign() {
+  const TABLE_ROWS = useLoaderData();
   return (
     <div className="min-h-[400px]">
       <Card className="h-full w-full overflow-x-auto dark:bg-sunset dark:border border-gray-800/85 shadow-sm">
         <table className="w-full min-w-[640px] table-auto text-left">
-          <thead className="bg-gray-200 dark:bg-gray-500/40 dark:text-white/50">
+          <thead className="bg-gray-200 dark:bg-myPurtiul/60 dark:text-white">
             <tr>
               {TABLE_HEAD.map((head) => (
                 <th key={head} className="p-4 pt-10 text-lg">
@@ -53,7 +29,7 @@ export default function AllCampaign() {
           </thead>
           <tbody>
             {TABLE_ROWS.map(
-              ({ _id, title, category, goal, deadline, email }) => {
+              ({ _id, title, category, amount, deadline, email }) => {
                 return (
                   <tr
                     key={_id}
@@ -61,7 +37,7 @@ export default function AllCampaign() {
                   >
                     <td className="p-4">
                       <Typography variant="h6" className="font-bold ">
-                        {title}
+                        {title.split(" ")[0] + " " + title.split(" ")[1]}...
                       </Typography>
                     </td>
                     <td className="p-4">
@@ -77,7 +53,7 @@ export default function AllCampaign() {
                         variant="small"
                         className="font-normal text-gray-600 dark:text-dark"
                       >
-                        ${goal}
+                        ${amount}
                       </Typography>
                     </td>
                     <td className="p-4">
@@ -91,7 +67,7 @@ export default function AllCampaign() {
                     <td className="p-4">
                       <Typography
                         variant="small"
-                        className="font-normal text-gray-600 dark:text-dark"
+                        className="font-normal text-gray-600 text-sm dark:text-dark"
                       >
                         {email}
                       </Typography>

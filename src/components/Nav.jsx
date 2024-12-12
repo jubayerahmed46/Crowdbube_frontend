@@ -45,11 +45,7 @@ function Nav() {
             onClick={() => navigate("/")}
             className="hover:bg-gray-500/5 rounded-md -m-1.5 p-1.5"
           >
-            <img
-              alt=""
-              src="/assets/logo.png"
-              className="md:h-12 h-10 w-auto"
-            />
+            <img alt="" src="/assets/logo.png" className="md:h-10 h-8 w-auto" />
           </button>
         </div>
         <div className="flex lg:hidden">
@@ -116,8 +112,8 @@ function Nav() {
           </NavLink>
         </PopoverGroup>
 
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <label className="swap swap-rotate mr-5">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end ">
+          <label className="swap swap-rotate mr-5 border dark:border-gray-600 p-1 rounded-full">
             <input
               type="checkbox"
               onChange={handleThemeToggle}
@@ -152,12 +148,12 @@ function Nav() {
                 >
                   <img
                     src={user?.photoURL}
-                    className="md:h-10 h-8 ring-2 ring-myPurtiul cursor-pointer aspect-square rounded-full"
+                    className="md:h-8 h-6 ring-2 ring-myPurtiul cursor-pointer aspect-square rounded-full"
                   />
                 </summary>
                 <div
                   ref={alertRef}
-                  className="absolute top-14  border p-12 rounded-md dark:bg-sunset dark:text-gray-300 bg-white right-5 shadow-md z-50"
+                  className="absolute top-14  border p-12 rounded-md dark:bg-sunset dark:text-gray-300 bg-white right-5 shadow-md z-50 "
                 >
                   <button
                     onClick={() => setIsAlertOpen(false)}

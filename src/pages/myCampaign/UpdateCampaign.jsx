@@ -1,79 +1,77 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css"; // Ensure the CSS is imported
-import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { FaXmark } from "react-icons/fa6";
 
-function AddCampaign() {
+function UpdateCampaign({ updateCampaign, setLoadPage }) {
   const [startDate, setStartDate] = useState(new Date());
-  const { user } = useAuth();
+  const [currCategory, setCurrCategory] = useState("");
 
-  const handlerSubmit = (e) => {
+  useEffect(() => {
+    setCurrCategory(updateCampaign?.category || "");
+  }, [updateCampaign]);
+
+  useEffect(() => {
+    if (updateCampaign?.deadline) {
+      const parsedDate = new Date(updateCampaign.deadline);
+      if (!isNaN(parsedDate)) {
+        setStartDate(parsedDate);
+      }
+    }
+  }, [updateCampaign]);
+
+  const { _id, url, title, amount, email, fullName, description } =
+    updateCampaign;
+
+  const submitHandler = (e) => {
     e.preventDefault();
 
     const form = e.target;
-
     const url = form.url.value;
     const title = form.title.value;
-    const category = form.category.value;
-    const amount = parseInt(form.amount.value);
+    const amount = form.amount.value;
+    const category = currCategory;
     const description = form.description.value;
-    const fullName = form.fullname.value;
-    const email = form.email.value;
 
-    if (!startDate) {
-      alert("Please select a deadline.");
-      return;
-    }
-
-    const newCampaign = {
-      title,
-      description,
+    const updatedCampaign = {
       url,
+      title,
       amount,
       category,
+      description,
       deadline: startDate.toISOString(),
-      fullName,
-      email,
     };
-    console.log(newCampaign);
-    (async function () {
-      try {
-        await fetch("http://localhost:4601/allCampaign", {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(newCampaign),
-        });
 
-        form.url.value = "";
-        form.title.value = "";
-        form.category.value = "";
-        form.amount.value = "";
-        form.description.value = "";
-        form.fullname.value = "";
-        form.email.value = "";
-
-        toast.success(<p className="text-sm">Campaign added successfully</p>);
-      } catch (err) {
-        console.log(err.message);
-      }
-    })();
+    fetch(`http://localhost:4601/myCampaign/update/${_id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedCampaign),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setLoadPage(true);
+        toast.success(
+          <p className="text-sm">
+            Campaign is updated. You can close this window.
+          </p>
+        );
+      });
   };
 
   return (
-    <div>
-      <div className="flex text-center flex-col items-center">
-        <h2 className="md:text-3xl text-2xl font-bold mb-2">
-          Add New Campaign
-        </h2>
-        <p className="md:text-lg text-base sm:w-8/12">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos ipsa,
-          ab quas odio veniam excepturi debitis adipisci sunt omnis ex.
-        </p>
+    <>
+      <div className="flex text-center flex-col items-center relative">
+        <h2 className="md:text-3xl text-2xl font-bold mb-2">Update Campaign</h2>
       </div>
-      <form className="p-5 mx-auto" onSubmit={handlerSubmit}>
+      <form method="dialog">
+        <button className="bg-mySecondery rounded-full p-1 text-white hover:bg-mySecondery/95 hover:scale-105 absolute top-3 right-3 text-base">
+          <FaXmark />
+        </button>
+      </form>
+      <form className="p-5 mx-auto" onSubmit={submitHandler}>
         <label className="form-control w-full">
           <div className="label">
             <span className="label-text text-lg  dark:text-dark">
@@ -86,6 +84,7 @@ function AddCampaign() {
             className="input input-bordered w-full dark:bg-sunset dark:border-gray-600"
             name="url"
             required
+            defaultValue={url}
           />
         </label>
         <label className="form-control w-full">
@@ -98,6 +97,7 @@ function AddCampaign() {
             className="input input-bordered w-full dark:bg-sunset dark:border-gray-600"
             name="title"
             required
+            defaultValue={title}
           />
         </label>
         <div className="flex sm:flex-row flex-col gap-5 mt-2">
@@ -111,14 +111,14 @@ function AddCampaign() {
               name="category"
               className="input input-bordered dark:bg-sunset dark:border-gray-600"
               required
+              value={currCategory}
+              onChange={(event) => setCurrCategory(event.target.value)}
             >
-              <option value="" disabled>
-                Select Category
-              </option>
+              <option disabled>Select Category</option>
               <option value="personal issue">Personal Issue</option>
-              <option value="startup">Startup</option>
-              <option value="creative idea">Creative Idea</option>
-              <option value="business">Business</option>
+              <option value="Startups">Startups</option>
+              <option value="Creative Ideas">Creative Ideas</option>
+              <option value="Business">Business</option>
             </select>
           </label>
           <label className="form-control w-full">
@@ -149,6 +149,7 @@ function AddCampaign() {
             className="input input-bordered w-full pl-6 dark:bg-sunset dark:border-gray-600"
             min="1"
             required
+            defaultValue={amount}
           />
           <span className="absolute bottom-[10px] left-3 text-lg opacity-80">
             $
@@ -166,6 +167,7 @@ function AddCampaign() {
             className="input input-bordered w-full dark:bg-sunset dark:border-gray-600"
             name="description"
             required
+            defaultValue={description}
           />
         </label>
         <div className="flex sm:flex-row flex-col gap-5 mt-2">
@@ -181,7 +183,7 @@ function AddCampaign() {
               className="input input-bordered w-full dark:bg-sunset dark:border-gray-600"
               name="fullname"
               readOnly
-              defaultValue={user?.displayName}
+              defaultValue={fullName}
             />
           </label>
           <label className="form-control w-full">
@@ -196,7 +198,7 @@ function AddCampaign() {
               className="input input-bordered w-full dark:bg-sunset dark:border-gray-600"
               name="email"
               readOnly
-              defaultValue={user?.email}
+              defaultValue={email}
             />
           </label>
         </div>
@@ -205,12 +207,12 @@ function AddCampaign() {
             type="submit"
             className="bg-mySecondery mt-5 hover:bg-[#309230] text-white font-bold rounded-tl-md rounded-bl-md md:px-4 px-2 md:py-2 py-1 text-lg w-full"
           >
-            Add
+            Update
           </button>
         </div>
       </form>
-    </div>
+    </>
   );
 }
 
-export default AddCampaign;
+export default UpdateCampaign;

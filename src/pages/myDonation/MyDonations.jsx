@@ -1,49 +1,51 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const MyDonations = () => {
   const [donations, setDonations] = useState([]);
+  const { user } = useAuth();
 
-  // Simulated API call to fetch donations
   useEffect(() => {
     const fetchDonations = async () => {
-      // Replace this mock data with an actual API call to your database
-      const mockDonations = [
-        {
-          _id: 1,
-          title: "Support for Education",
-          description:
-            "A campaign to support education for under privileged children.",
-          image: "https://via.placeholder.com/150",
-          donatedAmount: 500,
-          goal: 6000,
-        },
-        {
-          _id: 2,
-          title: "Medical Aid ",
-          description: "Helping those in need of urgent medical attention.",
-          image: "https://via.placeholder.com/150",
-          donatedAmount: 1000,
-          goal: 5000,
-        },
-      ];
-      setDonations(mockDonations);
+      fetch(`http://localhost:4601/myDonations/${user.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setDonations(data);
+        });
     };
 
     fetchDonations();
-  }, []);
+  }, [user]);
+
+  //   {
+  //     "_id": "675a3dae12b2625eacd73fec",
+  //     "username": "Jubayer Ahmed",
+  //     "email": "jubayerdesigner46@gmail.com",
+  //     "donatedCampaign": {
+  //         "_id": "67599bd48f75d43be0d192f0",
+  //         "title": "Documentary Production: The Reality of Climate Change",
+  //         "description": "Support the production of a groundbreaking documentary aimed at raising global awareness about the catastrophic impact of climate change.",
+  //         "amount": 40000,
+  //         "deadline": "2024-12-31T00:00:00.000Z",
+  //         "url": "https://i.ibb.co.com/c3hmjQm/trang-17-forum-1jpg09273231.jpg",
+  //         "category": "Creative Ideas",
+  //         "fullName": "Jubayer Ahmed",
+  //         "email": "jubayerdesigner46@gmail.com"
+  //     }
+  // }
 
   return (
     <div className="grid 2xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3 ">
-      {donations.map(
-        ({ _id, title, description, donatedAmount, image, goal }) => (
+      {donations?.map(
+        ({ donatedCampaign: { _id, title, description, url, amount } }) => (
           <div
             className="max-w-sm rounded overflow-hidden border dark:border-gray-800 p-3"
             key={_id}
           >
             <img
               className="w-full h-48 object-cover rounded-md"
-              src={image}
+              src={url}
               alt={title}
             />
             <div className="px-6 py-4">
@@ -57,15 +59,9 @@ const MyDonations = () => {
                 {description.slice(0, 70)}...
               </p>
               <p className="font-bold text-base mb-1">
-                Donated Amount:{" "}
-                <span className="text-mySecondery  font-body text-base mb-1">
-                  ${donatedAmount}
-                </span>
-              </p>
-              <p className="font-bold text-base mb-1">
                 Need:{" "}
                 <span className="text-myPrimary  font-body text-base mb-1">
-                  ${goal}
+                  ${amount}
                 </span>
               </p>
             </div>
