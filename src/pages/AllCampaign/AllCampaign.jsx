@@ -22,11 +22,11 @@ export default function AllCampaign() {
   }, [data]);
 
   const handleSort = () => {
-    console.log("sort");
+    ("sort");
     const sorted = [...campaigns].sort((a, b) => {
       return isSort ? a.amount - b.amount : b.amount - a.amount;
     });
-    console.log(sorted);
+    sorted;
     setCampaigns(sorted);
 
     if (isSort) {

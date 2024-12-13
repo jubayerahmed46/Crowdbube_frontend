@@ -22,7 +22,7 @@ function AuthProvder({ children }) {
     const authObserver = onAuthStateChanged(auth, (userCredetial) => {
       setLoader(false);
       if (userCredetial) {
-        console.log(userCredetial);
+        userCredetial;
         setUser(userCredetial);
       }
     });

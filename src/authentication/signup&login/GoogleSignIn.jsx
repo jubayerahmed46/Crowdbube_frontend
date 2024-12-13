@@ -19,7 +19,7 @@ function GoogleSignIn() {
         toast.success(<h2 className="text-sm">Login Successfull</h2>);
       })
       .catch((err) => {
-        console.log(err.message);
+        err.message;
       });
   };
   return (

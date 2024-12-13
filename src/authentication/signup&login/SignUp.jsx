@@ -46,7 +46,7 @@ function SignUp() {
         });
       })
       .catch((err) => {
-        console.log(err.message);
+        err.message;
         setEmailErr(err.message);
       });
   };

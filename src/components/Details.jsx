@@ -26,7 +26,7 @@ export function Details() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        data;
         if (data.acknowledged) {
           Swal.fire({
             position: "center",
@@ -38,7 +38,7 @@ export function Details() {
         }
       });
 
-    console.log(donationDetails);
+    donationDetails;
   };
 
   const { title, description, amount, deadline, url } = campaign || {};

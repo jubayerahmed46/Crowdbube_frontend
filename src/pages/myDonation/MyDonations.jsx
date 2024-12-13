@@ -15,7 +15,7 @@ const MyDonations = () => {
           setDonations(data);
         })
         .catch((err) => {
-          console.log(err);
+          err;
         })
         .finally(() => {
           setLoader(false);

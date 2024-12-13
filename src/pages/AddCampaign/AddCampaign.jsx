@@ -36,7 +36,7 @@ function AddCampaign() {
       fullName,
       email,
     };
-    console.log(newCampaign);
+    newCampaign;
     (async function () {
       try {
         await fetch("https://crowdcubebackend.vercel.app/allCampaign", {
@@ -57,7 +57,7 @@ function AddCampaign() {
 
         toast.success(<p className="text-sm">Campaign added successfully</p>);
       } catch (err) {
-        console.log(err.message);
+        err.message;
       }
     })();
   };
@@ -108,13 +108,11 @@ function AddCampaign() {
               className="input input-bordered dark:bg-sunset dark:border-gray-600"
               required
             >
-              <option value="" disabled>
-                Select Category
-              </option>
+              <option disabled>Select Category</option>
               <option value="personal issue">Personal Issue</option>
-              <option value="startup">Startup</option>
-              <option value="creative idea">Creative Idea</option>
-              <option value="business">Business</option>
+              <option value="Startups">Startups</option>
+              <option value="Creative Ideas">Creative Ideas</option>
+              <option value="Business">Business</option>
             </select>
           </label>
           <label className="form-control w-full">

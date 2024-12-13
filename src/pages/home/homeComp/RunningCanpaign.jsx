@@ -7,7 +7,7 @@ const RunningCanpaigns = () => {
   const [addTwo, setAddTwo] = useState(6);
   const campaignsData = useLoaderData();
 
-  console.log(campaignsData);
+  campaignsData;
 
   useEffect(() => {
     setCampaigns(campaignsData);
@@ -15,7 +15,7 @@ const RunningCanpaigns = () => {
   }, [addTwo]);
 
   const showMoreCampaignHandler = () => {
-    console.log(campaignsData.length);
+    campaignsData.length;
     if (campaignsData.length > 7) {
       setAddTwo((prev) => prev + 3);
     } else if (campaignsData.length === 7) {

@@ -21,7 +21,7 @@ export default function Login() {
         toast.success(<h2 className="text-sm">Login Successfull</h2>);
       })
       .catch((err) => {
-        console.log("login failed", err.message);
+        "login failed", err.message;
         setErrMess("Invalid Email and Password please check and try again!");
       })
       .finally(() => {
