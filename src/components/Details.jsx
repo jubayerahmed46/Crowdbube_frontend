@@ -1,13 +1,14 @@
 import { IoArrowBackOutline } from "react-icons/io5";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import { useEffect, useState } from "react";
 
 export function Details() {
   const campaign = useLoaderData();
   const navigate = useNavigate();
   const { user } = useAuth();
+  const [hasDeadline, setHasDeadline] = useState(true);
 
   const handlerDonation = (donatedCampaign) => {
     const donationDetails = {
@@ -42,9 +43,25 @@ export function Details() {
 
   const { title, description, amount, deadline, url } = campaign || {};
 
+  useEffect(() => {
+    const today = new Date();
+    const campaignDate = new Date(deadline);
+
+    if (today > campaignDate) {
+      setHasDeadline(false);
+    }
+  }, []);
+
   const remainingDays = Math.ceil(
     (new Date(deadline) - new Date()) / (1000 * 60 * 60 * 24)
   );
+
+  const noDeadlineError = () => {
+    Swal.fire({
+      title: "Opps, Deadline Ended",
+      text: "You cannot donate this campaign!",
+    });
+  };
   return (
     <section className="py-6 px-8">
       <button
@@ -85,7 +102,9 @@ export function Details() {
           </div>
           <div className="mb-4 flex  items-center gap-3 md:w-1/2 md:justify-start w-full">
             <button
-              onClick={() => handlerDonation(campaign)}
+              onClick={() =>
+                hasDeadline ? handlerDonation(campaign) : noDeadlineError()
+              }
               color="gray"
               className=" bg-mySecondery hover:bg-[#3c8f3c] text-white font-bold dark:bg-mySecondery dark:text-white/80 md:w-auto w-full dark:hover:bg-mySecondery/80 rounded-md md:px-10 px-5 md:py-2 py-1 text-lg"
             >

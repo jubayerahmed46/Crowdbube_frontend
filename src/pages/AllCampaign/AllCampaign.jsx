@@ -1,19 +1,56 @@
 import { Card, Typography } from "@material-tailwind/react";
+import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const TABLE_HEAD = [
   "Campaign Title",
   "Category",
-  "Target Amount",
+  "Donation Amount",
   "Deadline",
   "Created By",
   "Actions",
 ];
 
 export default function AllCampaign() {
-  const TABLE_ROWS = useLoaderData();
+  const [campaigns, setCampaigns] = useState([]);
+  const data = useLoaderData();
+  const [isSort, setIsSort] = useState(true);
+
+  useEffect(() => {
+    setCampaigns(data);
+  }, [data]);
+
+  const handleSort = () => {
+    console.log("sort");
+    const sorted = [...campaigns].sort((a, b) => {
+      return isSort ? a.amount - b.amount : b.amount - a.amount;
+    });
+    console.log(sorted);
+    setCampaigns(sorted);
+
+    if (isSort) {
+      toast.success(<p className="text-sm">Sorted in ascending order</p>);
+    } else {
+      toast.success(<p className="text-sm">Sorted in descending order</p>);
+    }
+
+    setIsSort(!isSort);
+  };
+
   return (
     <div className="min-h-[400px]">
+      <div className="flex text-center flex-col items-center">
+        <h2 className=" md:text-3xl text-2xl font-bold mb-5">All Campaign</h2>
+      </div>
+      <div className="flex justify-end">
+        <button
+          className="bg-[#ff5708ce] hover:bg-myPrimary text-white rounded-md mb-4 font-bold md:px-4 px-2 md:py-2 py-1 text-lg "
+          onClick={handleSort}
+        >
+          Sort By Donation Amount
+        </button>
+      </div>
       <Card className="h-full w-full overflow-x-auto dark:bg-sunset dark:border border-gray-800/85 shadow-sm">
         <table className="w-full min-w-[640px] table-auto text-left">
           <thead className="bg-gray-200 dark:bg-myPurtiul/60 dark:text-white">
@@ -28,7 +65,7 @@ export default function AllCampaign() {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.map(
+            {campaigns?.map(
               ({ _id, title, category, amount, deadline, email }) => {
                 return (
                   <tr

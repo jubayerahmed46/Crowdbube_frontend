@@ -68,10 +68,6 @@ function AddCampaign() {
         <h2 className="md:text-3xl text-2xl font-bold mb-2">
           Add New Campaign
         </h2>
-        <p className="md:text-lg text-base sm:w-8/12">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos ipsa,
-          ab quas odio veniam excepturi debitis adipisci sunt omnis ex.
-        </p>
       </div>
       <form className="p-5 mx-auto" onSubmit={handlerSubmit}>
         <label className="form-control w-full">

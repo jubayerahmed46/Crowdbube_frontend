@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../authentication/firebase.config";
+import useLoader from "../hooks/useLoader";
 
 const AuthContext = createContext();
 
@@ -16,10 +17,10 @@ const provider = new GoogleAuthProvider();
 
 function AuthProvder({ children }) {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { loader, setLoader } = useLoader();
   useEffect(() => {
     const authObserver = onAuthStateChanged(auth, (userCredetial) => {
-      setLoading(false);
+      setLoader(false);
       if (userCredetial) {
         console.log(userCredetial);
         setUser(userCredetial);
@@ -32,18 +33,18 @@ function AuthProvder({ children }) {
   // google signin
 
   const signInWithGoogle = async () => {
-    setLoading(true);
+    setLoader(true);
     return await signInWithPopup(auth, provider);
   };
 
   // emailPassword login
   const emailPasswordLogin = (email, password) => {
-    setLoading(true);
+    setLoader(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const createNewAccount = async (email, password) => {
-    setLoading(true);
+    setLoader(true);
     return await createUserWithEmailAndPassword(auth, email, password);
   };
 
@@ -60,8 +61,8 @@ function AuthProvder({ children }) {
         setUser,
         signOutUser,
         emailPasswordLogin,
-        loading,
-        setLoading,
+        loader,
+        setLoader,
       }}
     >
       {children}

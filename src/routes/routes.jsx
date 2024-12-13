@@ -52,7 +52,12 @@ export const routes = createBrowserRouter([
       },
       {
         path: "myDonations",
-        element: <MyDonations />,
+        element: (
+          <PrivetRoute>
+            {" "}
+            <MyDonations />
+          </PrivetRoute>
+        ),
       },
       {
         path: "auth",

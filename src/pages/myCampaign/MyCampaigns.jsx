@@ -69,7 +69,7 @@ const MyCampaign = () => {
               </th>
               <th className="p-4 text-left">
                 <Typography className="font-bold text-gray-700">
-                  Target Amount
+                  Donation Amount
                 </Typography>
               </th>
               <th className="p-4 text-left">

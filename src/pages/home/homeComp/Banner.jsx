@@ -1,5 +1,5 @@
-import { Description } from "@headlessui/react";
 import { Carousel } from "@material-tailwind/react";
+import { Typewriter } from "react-simple-typewriter";
 
 export function Banner() {
   const slidersData = [
@@ -45,9 +45,11 @@ export function Banner() {
               className="h-full w-full object-cover md:brightness-75 brightness-50"
             />
             <div className="absolute   top-1/2 z-10 mx-auto md:w-10/12 w-8/12 text-light-green-50 left-1/2 -translate-x-1/2 -translate-y-1/2  text-left">
-              <h2 className="text-3xl font-bold">{slider.title}</h2>
+              <h2 className="text-3xl font-bold">
+                <Typewriter typeSpeed={20} words={[slider.title]} />
+              </h2>
               <p className="sm:text-lg text-sm md:w-4/5 my-2 ">
-                {slider.description}
+                <Typewriter typeSpeed={4} words={[slider.description]} />
               </p>
               <button className="bg-mySecondery  hover:bg-[#33aa57ce]  font-bold rounded-md md:px-4 px-2 md:py-2 py-1 text-lg ">
                 Get Start

@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import { Fade } from "react-awesome-reveal";
 import { FaStar } from "react-icons/fa";
 
 const reviews = [
@@ -22,18 +23,20 @@ const reviews = [
 ];
 
 const ReviewCard = ({ name, feedback, rating }) => (
-  <div className="bg-white dark:bg-gray-600/10 p-6 rounded-lg shadow-md">
-    <h3 className="text-lg font-semibold mb-2">{name}</h3>
-    <p className="dark:text-neutral-200 text-base mb-4 ">{feedback}</p>
-    <div className="flex items-center text-lg text-center">
-      {Array(rating)
-        .fill()
-        .map((_, i) => (
-          <FaStar key={i} className="text-yellow-500" />
-        ))}
-      <span className="ml-2 ">{rating}/5</span>
+  <Fade cascade damping={0.1}>
+    <div className="bg-white dark:bg-gray-600/10 p-6 rounded-lg shadow-md">
+      <h3 className="text-lg font-semibold mb-2">{name}</h3>
+      <p className="dark:text-neutral-200 text-base mb-4 ">{feedback}</p>
+      <div className="flex items-center text-lg text-center">
+        {Array(rating)
+          .fill()
+          .map((_, i) => (
+            <FaStar key={i} className="text-yellow-500" />
+          ))}
+        <span className="ml-2 ">{rating}/5</span>
+      </div>
     </div>
-  </div>
+  </Fade>
 );
 
 const PeopleReviws = () => (
