@@ -1,10 +1,10 @@
-# Crowdcube: A Crowd Funding Application
+# Crowdcube: A Crowd Funding Application ( FrontEnd )
 
 Crowdcube is a crowdfunding platform that allows users to raise funds for projects, ideas, and causes. It features campaign creation, donation management, and user authentication with a modern design.
 
 ## Live Website
 
-**Surge**: https://crowdcube000001.surge.sh
+**Surge**: https://crowdcube000001.surge.sh </br>
 **Vercel**: https://crowdcubefrontend.vercel.app/
 
 ## Key Features
@@ -16,7 +16,6 @@ Crowdcube is a crowdfunding platform that allows users to raise funds for projec
 - **Authentication**: Secure login/register with email and Google.
 - **Custom Error Handling**: Toast notifications for all messages.
 - **Sort Functionality**: Sort campaigns by minimum donation amount.
-- **Extra Features**: Integrates animations and effects for a dynamic experience.
 
 ## Technologies Used
 
@@ -40,10 +39,6 @@ Crowdcube is a crowdfunding platform that allows users to raise funds for projec
      ```bash
      git clone <client-repo-url>
      ```
-   - Server-Side:
-     ```bash
-     git clone <server-repo-url>
-     ```
 
 2. Navigate to the respective project directories:
 
@@ -51,18 +46,10 @@ Crowdcube is a crowdfunding platform that allows users to raise funds for projec
      ```bash
      cd client
      ```
-   - Server-Side:
-     ```bash
-     cd server
-     ```
 
 3. Install dependencies for both:
 
    - Client-Side:
-     ```bash
-     npm install
-     ```
-   - Server-Side:
      ```bash
      npm install
      ```
@@ -77,13 +64,8 @@ Crowdcube is a crowdfunding platform that allows users to raise funds for projec
      ```bash
      npm run dev
      ```
-   - Server-Side:
-     ```bash
-     npm start
-     ```
 
 ## Repositories
 
 - **Category**: Tulip
-- **Client-Side**: https://github.com/programming-hero-web-course2/b10-a10-client-side-xubayers
 - **Server-Side**: https://github.com/programming-hero-web-course2/b10-a10-server-side-xubayers
