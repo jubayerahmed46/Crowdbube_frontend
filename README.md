@@ -4,7 +4,7 @@ Crowdcube is a crowdfunding platform that allows users to raise funds for projec
 
 ## Live Website
 
-**Surge**: crowdcube000001.surge.sh
+**Surge**: https://crowdcube000001.surge.sh
 **Vercel**: https://crowdcubefrontend.vercel.app/
 
 ## Key Features
