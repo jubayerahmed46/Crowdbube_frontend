@@ -4,7 +4,7 @@ Crowdcube is a crowdfunding platform that allows users to raise funds for projec
 
 ## Live Website
 
-**Surge**:
+**Surge**: crowdcube000001.surge.sh
 **Vercel**: https://crowdcubefrontend.vercel.app/
 
 ## Key Features
@@ -22,7 +22,7 @@ Crowdcube is a crowdfunding platform that allows users to raise funds for projec
 
 - **Frontend**: React, React Router DOM, TailwindCSS, and component libraries.
 - **Backend**: Node.js, Express, and MongoDB.
-- **Hosting**: Netlify for client-side and Vercel for server-side.
+- **Hosting**: Vercel for client-side and server-side.
 
 ## Deployment
 
@@ -32,7 +32,58 @@ Crowdcube is a crowdfunding platform that allows users to raise funds for projec
 4. Use `npm start` to run the client.
 5. Repeat for the server-side repository.
 
+## Deployment
+
+1. Clone the repositories:
+
+   - Client-Side:
+     ```bash
+     git clone <client-repo-url>
+     ```
+   - Server-Side:
+     ```bash
+     git clone <server-repo-url>
+     ```
+
+2. Navigate to the respective project directories:
+
+   - Client-Side:
+     ```bash
+     cd client
+     ```
+   - Server-Side:
+     ```bash
+     cd server
+     ```
+
+3. Install dependencies for both:
+
+   - Client-Side:
+     ```bash
+     npm install
+     ```
+   - Server-Side:
+     ```bash
+     npm install
+     ```
+
+4. Add `.env` files:
+
+   - Client-Side: Add Firebase credentials in `.env`.
+   - Server-Side: Add MongoDB credentials in `.env`.
+
+5. Start the servers:
+   - Client-Side:
+     ```bash
+     npm run dev
+     ```
+   - Server-Side:
+     ```bash
+     npm start
+     ```
+
 ## Repositories
 
-- **Client-Side**: [GitHub Link](#)
-- **Server-Side**: [GitHub Link](#)
+- **Category**: Tulip
+- **Client-Side**: https://github.com/programming-hero-web-course2/b10-a10-client-side-xubayers
+- **Server-Side**: https://github.com/programming-hero-web-course2/b10-a10-server-side-xubayers
