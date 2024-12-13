@@ -43,7 +43,7 @@ function UpdateCampaign({ updateCampaign, setLoadPage }) {
       deadline: startDate.toISOString(),
     };
 
-    fetch(`http://localhost:4601/myCampaign/update/${_id}`, {
+    fetch(`https://crowdcubebackend.vercel.app/myCampaign/update/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

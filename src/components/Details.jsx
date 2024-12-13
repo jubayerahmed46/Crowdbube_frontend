@@ -17,7 +17,7 @@ export function Details() {
       donatedCampaign,
     };
 
-    fetch("http://localhost:4601/donatedData", {
+    fetch("https://crowdcubebackend.vercel.app/donatedData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

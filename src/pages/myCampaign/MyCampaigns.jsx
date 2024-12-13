@@ -13,7 +13,7 @@ const MyCampaign = () => {
 
   useEffect(() => {
     setLoadPage(false);
-    fetch(`http://localhost:4601/myCampaigns/${user?.email}`)
+    fetch(`https://crowdcubebackend.vercel.app/myCampaigns/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setCampaigns(data);
@@ -32,7 +32,7 @@ const MyCampaign = () => {
       confirmButtonText: "Yes, Delete",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:4601/myCampaign/delete/${id}`, {
+        fetch(`https://crowdcubebackend.vercel.app/myCampaign/delete/${id}`, {
           method: "DELETE",
           headers: {
             "Contend-Type": "application/json",

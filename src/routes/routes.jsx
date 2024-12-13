@@ -23,7 +23,8 @@ export const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:4601/allCampaign?noQuery=true"),
+        loader: () =>
+          fetch("https://crowdcubebackend.vercel.app/allCampaign?noQuery=true"),
       },
       {
         path: "addCampaign",
@@ -40,7 +41,7 @@ export const routes = createBrowserRouter([
             <AllCampaign />
           </PrivetRoute>
         ),
-        loader: () => fetch("http://localhost:4601/allCampaign"),
+        loader: () => fetch("https://crowdcubebackend.vercel.app/allCampaign"),
       },
       {
         path: "myCampaign",
@@ -81,7 +82,7 @@ export const routes = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:4601/allCampaign/${params.id}`),
+          fetch(`https://crowdcubebackend.vercel.app/allCampaign/${params.id}`),
       },
     ],
   },

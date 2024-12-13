@@ -39,7 +39,7 @@ function AddCampaign() {
     console.log(newCampaign);
     (async function () {
       try {
-        await fetch("http://localhost:4601/allCampaign", {
+        await fetch("https://crowdcubebackend.vercel.app/allCampaign", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
