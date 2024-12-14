@@ -4,21 +4,27 @@ import useAuth from "../../hooks/useAuth";
 import "react-datepicker/dist/react-datepicker.css";
 import UpdateCampaign from "./UpdateCampaign";
 import Swal from "sweetalert2";
+import Loader from "../../components/Loader";
 
 const MyCampaign = () => {
   const { user } = useAuth();
   const [campaigns, setCampaigns] = useState([]);
   const [updateCampaign, setUpdateCampaign] = useState({});
-  const [loadPage, setLoadPage] = useState(true);
+  const [loadingPage, setLoadingPage] = useState(true);
 
   useEffect(() => {
-    setLoadPage(false);
     fetch(`https://crowdcubebackend.vercel.app/myCampaigns/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setCampaigns(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setLoadingPage(false);
       });
-  }, [user, loadPage]);
+  }, [user]);
 
   const handleUpdate = (campaign) => {
     document.getElementById("my_modal_4").showModal();
@@ -44,6 +50,10 @@ const MyCampaign = () => {
       }
     });
   };
+
+  if (loadingPage) {
+    return <Loader />;
+  }
 
   return (
     <div className="container mx-auto py-8">
@@ -139,10 +149,7 @@ const MyCampaign = () => {
       <dialog id="my_modal_4" className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
           <div className="modal-action flex-col">
-            <UpdateCampaign
-              setLoadPage={setLoadPage}
-              updateCampaign={updateCampaign}
-            />
+            <UpdateCampaign updateCampaign={updateCampaign} />
           </div>
         </div>
       </dialog>

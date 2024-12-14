@@ -7,7 +7,6 @@ import Loader from "../components/Loader";
 
 function MainLayout() {
   const { loader } = useLoader();
-  console.log(loader);
   return (
     <div className="relative">
       {loader ? (

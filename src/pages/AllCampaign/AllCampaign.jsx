@@ -2,6 +2,7 @@ import { Card, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import toast from "react-hot-toast";
+import Loader from "../../components/Loader";
 
 const TABLE_HEAD = [
   "Campaign Title",
@@ -16,9 +17,11 @@ export default function AllCampaign() {
   const [campaigns, setCampaigns] = useState([]);
   const data = useLoaderData();
   const [isSort, setIsSort] = useState(true);
+  const [loadingPage, setLoadingPage] = useState(true);
 
   useEffect(() => {
     setCampaigns(data);
+    setLoadingPage(false);
   }, [data]);
 
   const handleSort = () => {
@@ -37,6 +40,10 @@ export default function AllCampaign() {
 
     setIsSort(!isSort);
   };
+
+  if (loadingPage) {
+    return <Loader />;
+  }
 
   return (
     <div className="min-h-[400px]">

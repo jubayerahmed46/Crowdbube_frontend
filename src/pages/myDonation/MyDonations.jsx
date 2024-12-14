@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Fade } from "react-awesome-reveal";
+import Loader from "../../components/Loader";
 
 const MyDonations = () => {
   const [donations, setDonations] = useState([]);
-  const { user, setLoader } = useAuth();
+  const { user } = useAuth();
+  const [loadingPage, setLoadingPage] = useState(true);
 
   useEffect(() => {
     if (user?.email) {
@@ -18,10 +20,14 @@ const MyDonations = () => {
           err;
         })
         .finally(() => {
-          setLoader(false);
+          setLoadingPage(false);
         });
     }
   }, [user]);
+
+  if (loadingPage) {
+    return <Loader />;
+  }
 
   return (
     <div>

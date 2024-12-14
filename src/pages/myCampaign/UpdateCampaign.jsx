@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import toast from "react-hot-toast";
 import { FaXmark } from "react-icons/fa6";
 
-function UpdateCampaign({ updateCampaign, setLoadPage }) {
+function UpdateCampaign({ updateCampaign }) {
   const [startDate, setStartDate] = useState(new Date());
   const [currCategory, setCurrCategory] = useState("");
 
@@ -52,7 +52,6 @@ function UpdateCampaign({ updateCampaign, setLoadPage }) {
     })
       .then((res) => res.json())
       .then(() => {
-        setLoadPage(true);
         toast.success(
           <p className="text-sm">
             Campaign is updated. You can close this window.
