@@ -26,14 +26,6 @@ Crowdcube is a crowdfunding platform that allows users to raise funds for projec
 
 ## Deployment
 
-1. Clone the client-side repository.
-2. Run `npm install` to install dependencies.
-3. Add `.env` with Firebase and MongoDB credentials.
-4. Use `npm start` to run the client.
-5. Repeat for the server-side repository.
-
-## Deployment
-
 1. Clone the repositories:
 
    - Client-Side:
