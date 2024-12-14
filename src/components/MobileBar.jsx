@@ -3,7 +3,7 @@ import { Dialog, DialogPanel } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { FaCircleXmark } from "react-icons/fa6";
 import LogOut from "../authentication/signup&login/LogOut";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function MobileBar({
   mobileMenuOpen,
@@ -41,36 +41,57 @@ function MobileBar({
         <div className="mt-6 flow-root">
           <div className="-my-6 divide-y divide-gray-500/10">
             <div className="space-y-2 py-6">
-              <a
-                href="#"
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-neutral-200 text-light  hover:bg-gray-50"
+              <NavLink
+                to={"/"}
+                className={({ isActive }) =>
+                  `${
+                    isActive ? "dark:bg-dark/25 bg-gray-200" : ""
+                  }   -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-neutral-200 text-light  hover:bg-gray-50`
+                }
               >
                 Home
-              </a>
-              <a
-                href="#"
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-neutral-200 text-light  hover:bg-gray-50"
+              </NavLink>
+
+              <NavLink
+                to={"allCampaign"}
+                className={({ isActive }) =>
+                  `${
+                    isActive ? "dark:bg-dark/25 bg-gray-200" : ""
+                  }   -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-neutral-200 text-light  hover:bg-gray-50`
+                }
               >
                 All Campaign
-              </a>
-              <a
-                href="#"
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-neutral-200 text-light  hover:bg-gray-50"
+              </NavLink>
+              <NavLink
+                to={"addCampaign"}
+                className={({ isActive }) =>
+                  `${
+                    isActive ? "dark:bg-dark/25 bg-gray-200" : ""
+                  }   -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-neutral-200 text-light  hover:bg-gray-50`
+                }
               >
                 Add New Campaign
-              </a>
-              <a
-                href="#"
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-neutral-200 text-light  hover:bg-gray-50"
+              </NavLink>
+              <NavLink
+                to={"myCampaign"}
+                className={({ isActive }) =>
+                  `${
+                    isActive ? "dark:bg-dark/25 bg-gray-200" : ""
+                  }   -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-neutral-200 text-light  hover:bg-gray-50`
+                }
               >
                 My Campaign
-              </a>
-              <a
-                href="#"
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-neutral-200 text-light  hover:bg-gray-50"
+              </NavLink>
+              <NavLink
+                to={"myDonations"}
+                className={({ isActive }) =>
+                  `${
+                    isActive ? "dark:bg-dark/25 bg-gray-200" : ""
+                  }   -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:dark:bg-dark/25 dark:text-neutral-200 text-light  hover:bg-gray-50`
+                }
               >
                 My Donations
-              </a>
+              </NavLink>
             </div>
 
             <div className=" flex flex-col items-center">
