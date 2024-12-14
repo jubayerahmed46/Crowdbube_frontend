@@ -13,7 +13,6 @@ import {
   MyCampaign,
   MyDonations,
 } from ".";
-import PrivetAuths from "../privetRoutes/PrivetAuths";
 
 export const routes = createBrowserRouter([
   {
@@ -56,18 +55,13 @@ export const routes = createBrowserRouter([
         path: "myDonations",
         element: (
           <PrivetRoute>
-            {" "}
             <MyDonations />
           </PrivetRoute>
         ),
       },
       {
         path: "auth",
-        element: (
-          <PrivetAuths>
-            <AuthLayout />
-          </PrivetAuths>
-        ),
+        element: <AuthLayout />,
         children: [
           {
             path: "login",

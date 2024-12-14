@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import GoogleSignIn from "./GoogleSignIn";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
@@ -8,6 +8,8 @@ export default function Login() {
   const { emailPasswordLogin } = useAuth();
   const [processing, setProccesing] = useState(false);
   const [errMess, setErrMess] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -19,9 +21,13 @@ export default function Login() {
     emailPasswordLogin(email, password)
       .then(() => {
         toast.success(<h2 className="text-sm">Login Successfull</h2>);
+        if (location.state) {
+          navigate(location.state.from);
+        } else {
+          navigate("/");
+        }
       })
-      .catch((err) => {
-        "login failed", err.message;
+      .catch(() => {
         setErrMess("Invalid Email and Password please check and try again!");
       })
       .finally(() => {

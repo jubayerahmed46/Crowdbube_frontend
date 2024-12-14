@@ -12,15 +12,13 @@ function GoogleSignIn() {
     signInWithGoogle()
       .then(() => {
         if (location.state) {
-          navigate(location.state);
+          navigate(location.state.from);
         } else {
           navigate("/");
         }
         toast.success(<h2 className="text-sm">Login Successfull</h2>);
       })
-      .catch((err) => {
-        err.message;
-      });
+      .catch(() => {});
   };
   return (
     <div className="flex justify-center">
