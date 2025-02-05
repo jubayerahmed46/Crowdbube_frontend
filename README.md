@@ -34,14 +34,14 @@ Crowdcube is a crowdfunding platform that allows users to raise funds for projec
 
    - **Client-Side**:
      ```bash
-     git clone <client-repo-url>
+     git clone git@github.com:jubayerahmed46/Crowdbube_frontend.git
      ```
 
 2. Navigate to the respective project directories:
 
    - **Client-Side**:
      ```bash
-     cd client
+     cd Crowdbube_frontend
      ```
 
 3. Install dependencies:
