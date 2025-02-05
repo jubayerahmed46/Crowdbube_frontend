@@ -1,12 +1,14 @@
-# Crowdcube: A Crowd Funding Application ( FrontEnd )
+# Crowdcube: A Crowd Funding Application (Frontend)
+
+![Crowdcube Screenshot](https://i.ibb.co.com/ZRYrb83Z/Csdfasdfasdfapture.png)
 
 Crowdcube is a crowdfunding platform that allows users to raise funds for projects, ideas, and causes. It features campaign creation, donation management, and user authentication with a modern design.
 
 ## Live Website
 
-**Firebase**: https://crowdcude-fb127.web.app/
-**Surge**: https://crowdcube000001.surge.sh <br>
-**Vercel**: https://crowdcubefrontend.vercel.app/ <br>
+- **Firebase**: [Crowdcube Firebase](https://crowdcude-fb127.web.app/)
+- **Surge**: [Crowdcube Surge](https://crowdcube000001.surge.sh)
+- **Vercel**: [Crowdcube Vercel](https://crowdcubefrontend.vercel.app/)
 
 ## Key Features
 
@@ -20,45 +22,65 @@ Crowdcube is a crowdfunding platform that allows users to raise funds for projec
 
 ## Technologies Used
 
-- **Frontend**: React, React Router DOM, TailwindCSS, and component libraries.
-- **Backend**: Node.js, Express, and MongoDB.
+- **Frontend**: React, React Router DOM, TailwindCSS, component libraries.
+- **Backend**: Node.js, Express, MongoDB.
 - **Hosting**: Vercel for client-side and server-side.
 
-## Run Project in your device
+## Screenshot
+
+![Crowdcube Screenshot](https://i.ibb.co.com/ZRYrb83Z/Csdfasdfasdfapture.png)
+
+## Run the Project Locally
+
+### Step-by-Step Guide
 
 1. Clone the repositories:
 
-   - Client-Side:
+   - **Client-Side**:
      ```bash
      git clone <client-repo-url>
      ```
 
 2. Navigate to the respective project directories:
 
-   - Client-Side:
+   - **Client-Side**:
      ```bash
      cd client
      ```
 
-3. Install dependencies for both:
+3. Install dependencies:
 
-   - Client-Side:
+   - **Client-Side**:
      ```bash
      npm install
      ```
 
 4. Add `.env` files:
-
-   - Client-Side: Add Firebase credentials in `.env`.
-   - Server-Side: Add MongoDB credentials in `.env`.
+   
+   - **Client-Side**: Add Firebase credentials in `.env`.
+   - **Server-Side**: Add MongoDB credentials in `.env`.
 
 5. Start the servers:
-   - Client-Side:
+   
+   - **Client-Side**:
      ```bash
      npm run dev
      ```
 
 ## Repositories
 
-- **Category**: Tulip
-- **Server-Side**: https://github.com/programming-hero-web-course2/b10-a10-server-side-xubayers
+- **Category**: Crowdfunding
+- **Server-Side**: [Crowdcube Server-Side](https://github.com/programming-hero-web-course2/b10-a10-server-side-xubayers)
+
+---
+
+### Dependencies
+
+- **React**: JavaScript library for building user interfaces.
+- **TailwindCSS**: Utility-first CSS framework for rapid UI development.
+- **React Router DOM**: Declarative routing for React apps.
+- **Node.js**: JavaScript runtime for building server-side applications.
+- **Express**: Web framework for Node.js.
+- **MongoDB**: NoSQL database for storing application data.
+- **Firebase**: Platform for authentication and hosting.
+- **Vercel**: Deployment platform for front-end and back-end applications.
