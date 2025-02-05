@@ -26,10 +26,6 @@ Crowdcube is a crowdfunding platform that allows users to raise funds for projec
 - **Backend**: Node.js, Express, MongoDB.
 - **Hosting**: Vercel for client-side and server-side.
 
-## Screenshot
-
-![Crowdcube Screenshot](https://i.ibb.co.com/ZRYrb83Z/Csdfasdfasdfapture.png)
-
 ## Run the Project Locally
 
 ### Step-by-Step Guide
